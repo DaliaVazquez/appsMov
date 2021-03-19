@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "184883948906",
+    "project_id": "nerve-b145d",
+    "storage_bucket": "nerve-b145d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184883948906:android:711aa6c505df14e44b4913",
+        "android_client_info": {
+          "package_name": "com.example.act12"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "184883948906-2ltmpv6rsse7npljr5eqas9gqoge9qgs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDd7XF-hpeVBF6y7S9l4WDqPwokQNGBLLk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "184883948906-2ltmpv6rsse7npljr5eqas9gqoge9qgs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
