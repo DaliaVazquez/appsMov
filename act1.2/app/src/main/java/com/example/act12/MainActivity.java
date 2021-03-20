@@ -1,8 +1,10 @@
 package com.example.act12;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -42,10 +44,16 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, CrearCuenta.class);
         startActivityForResult(i, EXAMPLE_CODE);
     }
-    public void toChoose(View v) {
-        Intent i = new Intent(this, Choose.class);
-        startActivityForResult(i, EXAMPLE_CODE);
+    public void toChoose() {
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        if(user != null)
+        {
+            Intent i = new Intent(this, Choose.class);
+            startActivityForResult(i, EXAMPLE_CODE);
+        }
     }
+
     public void login(View v){
 
         // logout to do login again
@@ -65,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
 
                             // how to retrieve info from the user
-
                             // check if user is logged in
                             if(user != null){
 
@@ -77,8 +84,9 @@ public class MainActivity extends AppCompatActivity {
 
                                 String uid = user.getUid();
                                 // String token = user.getIdToken();
-                                Toast.makeText(MainActivity.this, "USER IS LOGGED IN: " + uid, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(MainActivity.this, "USER IS LOGGED IN: " + uid, Toast.LENGTH_SHORT).show();
                             }
+                            toChoose();
 
                         }else{
 
@@ -93,5 +101,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
 }

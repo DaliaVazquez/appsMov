@@ -16,6 +16,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class CrearCuenta extends AppCompatActivity {
 
@@ -46,16 +47,26 @@ public class CrearCuenta extends AppCompatActivity {
 
                             // do something on success
                             FirebaseUser user = mAuth.getCurrentUser();
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(nombre.getText().toString())
+                                    .build();
 
-                            Toast.makeText(
-                                    CrearCuenta.this,
-                                    "User crate: " + user.getEmail(),
-                                    Toast.LENGTH_SHORT).show();
+                            user.updateProfile(profileUpdates)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(
+                                                        CrearCuenta.this,
+                                                        "User crate: " + user.getEmail(),
+                                                        Toast.LENGTH_SHORT).show();
+
+                                            }
+                                        }
+                                    });
 
                             mAuth.signOut();
-                            Intent i = new Intent();
-                            setResult(Activity.RESULT_OK, i);
-                            finish();
+
                         } else {
                             // do something on failure
                             Toast.makeText(
