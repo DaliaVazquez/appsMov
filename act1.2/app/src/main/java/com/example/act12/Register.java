@@ -1,15 +1,15 @@
 package com.example.act12;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,35 +19,31 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Watcher extends AppCompatActivity {
+public class Register extends AppCompatActivity {
 
-    private ImageButton buttonBack;
-    private TextView nombreView,descripcionView, puntosView;
-    private DatabaseReference dbNombre, dbDescripcion, dbPuntos;
+
     private FirebaseAuth authentication;
+    private DatabaseReference dbNombre, dbDescripcion, dbPuntos;
+    private EditText nombre,descripcion, puntos;
+    //private TextView nombreView,descripcionView, puntosView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_watcher);
+        setContentView(R.layout.activity_register);
 
-        buttonBack = findViewById(R.id.back);
-        buttonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent();
+        nombre = findViewById(R.id.inputNombreReto);
+        descripcion = findViewById(R.id.inputDescripcion);
+        puntos = findViewById(R.id.inputPuntosReto);
 
-                setResult(Activity.RESULT_OK, i);
+        /*
+        nombreView = findViewById(R.id.nombreReto);
+        descripcionView = findViewById(R.id.descripcionReto);
+        puntosView = findViewById(R.id.puntosReto);
 
-                finish();
-            }
-        });
+         */
 
         authentication = FirebaseAuth.getInstance();
-
-        nombreView = findViewById(R.id.nombreRetoWatcher);
-        descripcionView = findViewById(R.id.descRetoWatcher);
-        puntosView = findViewById(R.id.puntosRetoWatcher);
     }
 
 
@@ -65,12 +61,12 @@ public class Watcher extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String value = snapshot.getValue(String.class);
-                nombreView.setText(value);
+                //nombreView.setText(value);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Watcher.this, error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register.this, error.toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -81,12 +77,12 @@ public class Watcher extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String value = snapshot.getValue(String.class);
-                descripcionView.setText(value);
+                //descripcionView.setText(value);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Watcher.this, error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register.this, error.toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -97,21 +93,29 @@ public class Watcher extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String value = snapshot.getValue(String.class);
-                puntosView.setText(value);
+                //puntosView.setText(value);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Watcher.this, error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register.this, error.toString(), Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
-    public void toChoose(View v){
-            Intent i = new Intent(this, Register.class);
-            startActivityForResult(i, 0);
+    public void saveValue(View v){
 
+        Toast.makeText(this, "SAVING VALUE", Toast.LENGTH_SHORT).show();
+        dbNombre.setValue(nombre.getText().toString());
+        dbPuntos.setValue(puntos.getText().toString());
+        dbDescripcion.setValue((descripcion.getText().toString()));
     }
 
+    public void back(View v) {
+        Intent i = new Intent();
+
+        setResult(Activity.RESULT_OK, i);
+
+        finish();
+    }
 }

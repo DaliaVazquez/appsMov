@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Act12">
-        <activity android:name=".Choose"></activity>
-        <activity android:name=".CrearCuenta"></activity>
+        <activity android:name=".Register"></activity>
+        <activity android:name=".Choose" />
+        <activity android:name=".CrearCuenta" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,8 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Watcher"></activity>
-        <activity android:name=".Player"></activity>
+        <activity android:name=".Watcher" />
+        <activity android:name=".Player" />
     </application>
 
 </manifest>
