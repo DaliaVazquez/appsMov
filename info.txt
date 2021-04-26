@@ -1,14 +1,14 @@
 [
   {
     "nombre": "karma",
-    "hobby": "Limpiar",
+    "hobby": "matar",
     "edad": "12",
     "telefono": "3001540854",
     "direccion": "japon"
   },
   {
     "nombre": "fuji",
-    "hobby": "tenis",
+    "hobby": "tennis",
     "edad": "12",
     "telefono": "3001540854",
     "direccion": "japon"
@@ -22,17 +22,17 @@
   },
   {
     "nombre": "zuko",
-    "hobby": "honor",
+    "hobby": "caza de avatares",
     "edad": "17",
     "telefono": "4445559977",
     "direccion": "nacion del fuego"
   },
   {
-    "nombre": "damian",
-    "hobby": "Leer",
+    "nombre": "merlin",
+    "hobby": "magia",
     "edad": "13",
     "telefono": "1234567890",
-    "direccion": "gotham"
+    "direccion": "camelot"
   },
   {
     "nombre": "stiles",
@@ -42,7 +42,7 @@
     "direccion": "Valle esmeralda 74"
   },
   {
-    "nombre": "sherlok",
+    "nombre": "sherlock",
     "hobby": "investigar",
     "edad": "30",
     "telefono": "9993336610",
